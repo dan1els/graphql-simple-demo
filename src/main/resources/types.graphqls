@@ -8,13 +8,6 @@ type Person {
     cats: [Cat!]!
 }
 
-type Query {
-    cats(count: Int, offset: Int): [Cat]!
-    catByName(name: String): Cat!
-    persons(count: Int, offset: Int): [Person]!
-    personByName(firstname: String, lastname: String): Person!
-}
-
 input PersonLike {
     firstname: String!
     lastname: String!
@@ -22,6 +15,13 @@ input PersonLike {
 
 input CatLike {
     name: String!
+}
+
+type Query {
+    cats(count: Int, offset: Int): [Cat]!
+    catByName(name: String): Cat!
+    persons(count: Int, offset: Int): [Person]!
+    personByName(firstname: String, lastname: String): Person!
 }
 
 type Mutation {
