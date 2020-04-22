@@ -1,6 +1,15 @@
 # graphql-simple-demo
 Simple GraphQL and Spring boot demo
 
+Build and run:
+```
+mvn clean install spring-boot:run
+```
+GraphiQL endpoint:
+
+http://localhost:8080/graphiql
+
+
 query example:
 ```
 query {
