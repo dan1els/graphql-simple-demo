@@ -1,0 +1,30 @@
+type Cat {
+    name: String!
+}
+
+type Person {
+    firstname: String!
+    lastname: String!
+    cats: [Cat!]!
+}
+
+type Query {
+    cats(count: Int, offset: Int): [Cat]!
+    catByName(name: String): Cat!
+    persons(count: Int, offset: Int): [Person]!
+    personByName(firstname: String, lastname: String): Person!
+}
+
+input PersonLike {
+    firstname: String!
+    lastname: String!
+}
+
+input CatLike {
+    name: String!
+}
+
+type Mutation {
+    newCat(name: String!): Cat!
+    assignCat(person: PersonLike!, cat: CatLike!): Person!
+}
