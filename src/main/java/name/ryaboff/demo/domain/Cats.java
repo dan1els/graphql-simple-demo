@@ -1,27 +1,28 @@
 package name.ryaboff.demo.domain;
 
-import com.google.common.collect.Sets;
 import name.ryaboff.demo.dao.CatLike;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.stream.Collectors;
 
-import static com.google.common.collect.Sets.*;
 import static java.util.Set.of;
 
 @Component
 public class Cats {
 
-    private Set<Cat> cats;
+    private final Set<Cat> cats;
 
     public Cats() {
-        cats = of(
-            new Cat("Tiger"),
-            new Cat("Max"),
-            new Cat("Lucky"),
-            new Cat("Misty")
+        cats = new CopyOnWriteArraySet<>(
+            of(
+                new Cat("Tiger"),
+                new Cat("Max"),
+                new Cat("Lucky"),
+                new Cat("Misty")
+            )
         );
     }
 
@@ -47,6 +48,6 @@ public class Cats {
     }
 
     public void add(Cat cat) {
-        this.cats = union(this.cats, Set.of(cat));
+        this.cats.add(cat);
     }
 }
